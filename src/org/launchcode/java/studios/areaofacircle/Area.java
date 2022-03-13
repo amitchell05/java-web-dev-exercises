@@ -4,24 +4,44 @@ import java.util.Scanner;
 
 public class Area {
     public static void main(String[] args) {
+        double radius = 0.0;
+        String strInput;
+        boolean valid = false;
+        boolean isPositiveNumber;
+
+        // Set up Scanner
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter a radius: ");
-        Double radius = input.nextDouble();
 
-        boolean isValidRadius = validateRadius(radius);
+        // Keep looking until valid input
+        while (!valid) {
+            // Prompt user for a radius
+            System.out.println("Enter a radius: ");
 
-        if (isValidRadius) {
-            double area = Circle.getArea(radius);
-            System.out.println("The area of a circle of radius " +  radius + " is: " + area);
+            // Grab input from keyboard
+            strInput = input.nextLine();
+
+            // Try to convert String into Double
+            try {
+                radius = Double.parseDouble(strInput);
+                isPositiveNumber = validateRadius(radius);
+
+                if (isPositiveNumber) {
+                    valid = true;
+                    double area = Circle.getArea(radius);
+                    System.out.println("The area of a circle of radius " +  radius + " is: " + area);
+                }
+            } catch(NumberFormatException error) {
+                System.out.println("Error - enter a number for radius");
+            }
         }
     }
 
     static boolean validateRadius(Double radius) {
-        if (radius < 0) {
-            System.out.println("Please enter a radius that is greater than or equal to 0.");
-            return false;
-        } else {
+        if (radius >= 0) {
             return true;
         }
+
+        System.out.println("Error - enter a number greater than or equal to zero.");
+        return false;
     }
 }
