@@ -36,7 +36,7 @@ public class Area {
         }
     }
 
-    static boolean validateRadius(Double radius) {
+    public static boolean validateRadius(Double radius) {
         if (radius >= 0) {
             return true;
         }
