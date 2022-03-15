@@ -9,13 +9,13 @@ public class Area {
         String radiusAsString;
         boolean valid = false;
 
-        while (!valid) {
+        do {
             System.out.print("Enter a radius: ");
             radiusAsString = input.nextLine();
 
             if (radiusAsString.isEmpty()) {
-                System.out.println("No value entered.");
-            } else  {
+                System.out.println("Please enter a radius.");
+            } else {
                 try {
                     radius = Double.parseDouble(radiusAsString);
                     if (radius < 0) {
@@ -27,7 +27,7 @@ public class Area {
                     System.out.println("Please enter a number for radius");
                 }
             }
-        }
+        } while(!valid);
 
         double area = Circle.getArea(radius);
         System.out.println("The area of a circle of radius " +  radius + " is: " + area);
