@@ -17,7 +17,7 @@ public class CharacterCounter {
             String convertedChar = Character.toString(character).toLowerCase();
             if (storedChars.containsKey(convertedChar)) {
                 storedChars.put(convertedChar, storedChars.get(convertedChar) + 1);
-            } else {
+            } else if (Character.isLetterOrDigit(character)){
                 storedChars.put(convertedChar, 1);
             }
         }
