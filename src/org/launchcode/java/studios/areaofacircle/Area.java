@@ -27,9 +27,11 @@ public class Area {
                     System.out.println("Please enter a number for radius");
                 }
             }
-        } while(!valid);
+        } while (!valid);
 
         double area = Circle.getArea(radius);
         System.out.println("The area of a circle of radius " +  radius + " is: " + area);
+
+        input.close();
     }
 }
