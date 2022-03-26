@@ -7,15 +7,12 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Menu {
+public class Menu  {
+    static ArrayList<MenuItem> menuItems = new ArrayList<>();
+    static LocalDate today = LocalDate.now();
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     public static void main(String[] args) throws ParseException {
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-
-        LocalDate today = LocalDate.now();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
         Date dateOne = dateFormat.parse("15-11-2021");
         Date dateTwo = dateFormat.parse("21-1-2022");
         Date dateThree = dateFormat.parse("26-03-2022");
@@ -24,18 +21,38 @@ public class Menu {
         MenuItem menuItem2 = new MenuItem(15, "parmesan crusted chicken", "main course", dateTwo);
         MenuItem menuItem3 = new MenuItem(8.25, "oreo blizzard", "dessert", dateThree);
 
-        menuItems.add(menuItem1);
-        menuItems.add(menuItem2);
-        menuItems.add(menuItem3);
+        addMenuItem(menuItem1);
+        addMenuItem(menuItem2);
+        addMenuItem(menuItem3);
 
-        for (MenuItem menuItem : menuItems) {
-            LocalDate menuItemDate = menuItem.getDateAdded().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        printMenu(menuItems);
+        printMenuItem(menuItem1);
 
-            if (menuItemDate.isEqual(today)) {
-                System.out.println("New Item: " + menuItem.getDescription());
-            } else {
-                System.out.println("Original Menu Item: " + menuItem.getDescription());
-            }
-        }
+//        removeMenuItem(menuItems.indexOf(menuItem2));
+
+//        isNewMenuItem(menuItem1);
+//        isNewMenuItem(menuItem2);
+//        isNewMenuItem(menuItem3);
+    }
+
+    private static void addMenuItem(MenuItem menuItem) {
+        menuItems.add(menuItem);
+    }
+
+    private static void removeMenuItem(int itemIndex) {
+        menuItems.remove(itemIndex);
+    }
+
+    private static boolean isNewMenuItem(MenuItem menuItem) {
+        LocalDate menuItemDate = menuItem.getDateAdded().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return menuItemDate.isEqual(today);
+    }
+
+    private static void printMenuItem(MenuItem menuItem) {
+        System.out.println(menuItem.getDescription());
+    }
+
+    private static void printMenu(ArrayList<MenuItem> menu) {
+        // TODO: Loop through menu and print out menu item names?
     }
 }
