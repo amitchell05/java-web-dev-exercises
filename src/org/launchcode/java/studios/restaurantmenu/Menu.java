@@ -34,12 +34,14 @@ public class Menu {
             System.out.println("This menu item already exists");
         } else {
             this.menuItems.add(menuItem);
+            updateMenuLocalDate();
         }
         return this.menuItems;
     }
 
     public ArrayList<MenuItem> removeMenuItem(MenuItem menuItem) {
         menuItems.remove(menuItem);
+        updateMenuLocalDate();
         return this.menuItems;
     }
 
@@ -57,5 +59,9 @@ public class Menu {
             System.out.printf("%s: $%s\n", item.getDescription(), item.getPrice());
         }
         System.out.println("*****");
+    }
+
+    public void updateMenuLocalDate() {
+        this.dateUpdated = LocalDate.now();
     }
 }
