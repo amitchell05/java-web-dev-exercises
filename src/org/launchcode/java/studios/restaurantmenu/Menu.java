@@ -47,10 +47,10 @@ public class Menu {
     }
 
     public void printMenu() {
-        System.out.print("*****");
+        System.out.println("*****");
         for (MenuItem item : this.menuItems) {
-            System.out.printf("\n%s: $%s\n", item.getDescription(), item.getPrice());
-            System.out.print("*****");
+            System.out.printf("%s: $%s\n", item.getDescription(), item.getPrice());
+            System.out.print("*****\n");
         }
     }
 }
