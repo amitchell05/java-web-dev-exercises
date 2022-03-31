@@ -29,7 +29,12 @@ public class Menu {
     }
 
     public ArrayList<MenuItem> addMenuItem(MenuItem menuItem) {
-        this.menuItems.add(menuItem);
+        // Equivalent of filter?
+        if (this.menuItems.stream().anyMatch(item -> item.getDescription().equals(menuItem.getDescription()))) {
+            System.out.println("This menu item already exists");
+        } else {
+            this.menuItems.add(menuItem);
+        }
         return this.menuItems;
     }
 
@@ -50,7 +55,7 @@ public class Menu {
         System.out.println("*****");
         for (MenuItem item : this.menuItems) {
             System.out.printf("%s: $%s\n", item.getDescription(), item.getPrice());
-            System.out.print("*****\n");
         }
+        System.out.println("*****");
     }
 }

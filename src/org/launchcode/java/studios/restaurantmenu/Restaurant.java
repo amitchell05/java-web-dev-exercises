@@ -13,6 +13,7 @@ public class Restaurant {
         MenuItem menuItem1 = new MenuItem(11.15, "nacho chips bowl", "appetizer");
         MenuItem menuItem2 = new MenuItem(15, "parmesan crusted chicken", "main course");
         MenuItem menuItem3 = new MenuItem(8.25, "oreo blizzard", "dessert");
+        MenuItem menuItem4 = new MenuItem(20, "nacho chips bowl", "main course");
 
         // Create menu
         Menu ourMenu = new Menu(LocalDate.now(), startingMenu);
@@ -21,6 +22,7 @@ public class Restaurant {
         ourMenu.addMenuItem(menuItem1);
         ourMenu.addMenuItem(menuItem2);
         ourMenu.addMenuItem(menuItem3);
+        ourMenu.addMenuItem(menuItem4);
 
         // Print the entire, updated menu
         ourMenu.printMenu();
